@@ -23,7 +23,7 @@ def app(environ, start_response):
         path = environ.get("PATH_INFO")
         if path.endswith("/"):
             path = path[:-1]
-        if path == "/":
+        if path == "":
             data = home(environ)
         elif path == "/contact":
             data = Contact_us(environ)    
