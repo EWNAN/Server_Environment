@@ -17,18 +17,24 @@ def Contact_us(environ):
     return render_template(
         template_name= "contact.html",
         context= {}
-    )    
+    )
+
+def error(environ):
+     return render_template(
+        template_name= "404.html",
+        context= {}
+    )       
 
 def app(environ, start_response):
         path = environ.get("PATH_INFO")
         if path.endswith("/"):
             path = path[:-1]
-        if path == "":
+        if path == "/":
             data = home(environ)
         elif path == "/contact":
             data = Contact_us(environ)    
         else:
-            data = render_template(template_name = '404.html', path=path)
+            data = error(environ)
         #for k, v in environ.items():
        #     print(k,v)
        # data = "Hello World!!!!!"
